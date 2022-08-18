@@ -7,9 +7,18 @@
 
     public class BaseViewModel : INotifyPropertyChanged
     {
+        #region Attributes
+        private bool isBusy;
+        #endregion
 
         #region Properties
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public bool IsBusy
+        {
+            get => isBusy;
+            set => SetProperty(ref isBusy, value);
+        }
         #endregion
 
 

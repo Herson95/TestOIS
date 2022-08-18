@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transform= "clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:converters="clr-namespace:TestOIS.Converters"
              x:Class="TestOIS.Views.ProductsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
@@ -9,17 +10,53 @@
     <ContentPage.Resources>
         <converters:LocalImage x:Key="LocalImageConverter"/>
     </ContentPage.Resources>
-    <StackLayout BindingContext="{Binding ProductsViewModel}" >
-
+    <StackLayout x:Name="Main" BindingContext="{Binding ProductsViewModel}" >
+         <SearchBar Text="{Binding Search, Mode=TwoWay}" Placeholder="Title" PlaceholderColor="Silver"/>
          <ListView
             ItemsSource="{Binding Products}"
             HasUnevenRows="True"
-             >
+            IsRefreshing="{Binding IsBusy}">
 
              <ListView.ItemTemplate>
               <DataTemplate>
                 <ViewCell>
-                  <StackLayout>
+                     <Grid ColumnDefinitions="Auto" Padding="0,20,30,0">
+                                <Frame Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" HeightRequest="180" CornerRadius="20" Margin="5" BorderColor="DarkBlue"> 
+                                    <Grid Grid.Row="1" RowDefinitions="30,50,Auto,Auto,20" ColumnDefinitions="*">
+                                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Title}" FontSize="20" FontAttributes="Bold"/>
+                                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding Description}" TextColor="Silver" Padding="0,0,50,0"/>
+                                        <Label Grid.Row="2" Grid.Column="0" Text="{Binding Category, StringFormat='Category: {0}'}" TextColor="Black"/>
+                                      
+                                        <Label Grid.Row="3" Grid.Column="0" Text="{Binding Price, StringFormat='{0:C}'}"
+                                               FontAttributes="Bold" VerticalOptions="Center" Padding="0,10,0,0"/>
+                                        <Label Text="&#xf005;"
+                                               IsVisible="{Binding Rating.IsVisibleStarRating}"
+                                               FontSize="20" Grid.Row="4" Grid.Column="0"
+                                               FontFamily="FaSolid"
+                                               TextColor="DarkBlue" FontAttributes="Bold"/>
+                                    </Grid> 
+                                </Frame>
+                                <ff:CachedImage Grid.Column="1" HorizontalOptions="EndAndExpand"
+                                                VerticalOptions="EndAndExpand"
+                                                Source="{Binding Image,Converter={StaticResource LocalImageConverter}}"
+                                                HeightRequest="120"
+                                                WidthRequest="120"
+                                                 >
+
+                                     <ff:CachedImage.Transformations>
+                                        <transform:CircleTransformation />  
+                                    </ff:CachedImage.Transformations>
+                                </ff:CachedImage>
+                                
+                                <Grid.GestureRecognizers>
+                                      <TapGestureRecognizer Command="{Binding Source={x:Reference Main}, Path=BindingContext.SelectedProductCommand}" CommandParameter="{Binding .}"/>
+                                 </Grid.GestureRecognizers>
+                                
+                           </Grid>
+
+                  <!--<Grid>
+                     
+                          
                    <ff:CachedImage Source="{Binding Image,Converter={StaticResource LocalImageConverter}}"
                                    LoadingPlaceholder = "Logo"
                                     ErrorPlaceholder     = "Error"
@@ -36,7 +73,7 @@
                     <Label Text="{Binding Rating.Rate}" TextColor="Black"/>
 
                   
-                  </StackLayout>
+                  </Grid>-->
                 </ViewCell>
               </DataTemplate>
             </ListView.ItemTemplate>

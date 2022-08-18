@@ -36,6 +36,8 @@
 
         public ProductsViewModel ProductsViewModel { get; set; }
 
+        public ProductViewModel ProductViewModel { get; set; }
+
       
         #endregion
 

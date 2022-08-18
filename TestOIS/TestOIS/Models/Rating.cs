@@ -1,9 +1,8 @@
-﻿using System;
-using Newtonsoft.Json;
-using SQLiteNetExtensions.Attributes;
-
-namespace TestOIS.Models
+﻿namespace TestOIS.Models
 {
+    using Newtonsoft.Json;
+    using SQLiteNetExtensions.Attributes;
+
     public partial class Rating
     {
         [JsonProperty("rate")]
@@ -14,6 +13,18 @@ namespace TestOIS.Models
 
         [ForeignKey(typeof(Product))]
         public int ProductId { get; set; }
+
+        public bool IsVisibleStarRating
+        {
+            get
+            {
+                if (Rate >= 4)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }
 

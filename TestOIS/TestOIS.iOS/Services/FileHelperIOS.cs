@@ -1,24 +1,25 @@
 ﻿using System;
 using System.IO;
 using System.Net;
-using TestOIS.Droid.Services;
 using TestOIS.Interfaces;
+using TestOIS.iOS.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 
-[assembly: Dependency(typeof(FileHelperAndroid))]
-namespace TestOIS.Droid.Services
+[assembly: Dependency(typeof(FileHelperIOS))]
+namespace TestOIS.iOS.Services
 {
-    public class FileHelperAndroid : IFileHelper
+    public class FileHelperIOS : IFileHelper
     {
         public void DownloadImage(string url)
         {
             try
             {
-                var context = Android.App.Application.Context;
-                string pathToNewFolder = Path.Combine(context.GetExternalFilesDir(Android.OS.Environment.DataDirectory.AbsolutePath).ToString(), "MyImages");
+
+                string pathToNewFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),"Images");
                 CreateDirectoryIfNotExists(pathToNewFolder);
                 WebClient webClient = new WebClient();
-                string pathToNewFile = Path.Combine(pathToNewFolder,Path.GetFileName(url));
+                string pathToNewFile = Path.Combine(pathToNewFolder, Path.GetFileName(url));
                 webClient.DownloadFileAsync(new Uri(url), pathToNewFile);
             }
             catch (Exception)
@@ -32,10 +33,9 @@ namespace TestOIS.Droid.Services
             string pathToNewFile = string.Empty;
             try
             {
-                var context = Android.App.Application.Context;
-                string pathToNewFolder = Path.Combine(context.GetExternalFilesDir(Android.OS.Environment.DataDirectory.AbsolutePath).ToString(), "MyImages");
-                pathToNewFile  = Path.Combine(pathToNewFolder, Path.GetFileName(url));
-                
+                string pathToNewFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),"Images");
+                pathToNewFile = Path.Combine(pathToNewFolder, Path.GetFileName(url));
+
             }
             catch (Exception)
             {
@@ -43,8 +43,8 @@ namespace TestOIS.Droid.Services
             }
 
             return pathToNewFile;
-            
-        
+
+
         }
 
         private void CreateDirectoryIfNotExists(string path)
@@ -60,7 +60,7 @@ namespace TestOIS.Droid.Services
             {
 
             }
-            
+
         }
     }
 }

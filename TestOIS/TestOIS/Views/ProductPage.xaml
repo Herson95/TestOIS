@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transform= "clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:converters="clr-namespace:TestOIS.Converters"
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    x:Class="TestOIS.Views.ProductPage">
+    <ContentPage.Resources>
+        <converters:LocalImage x:Key="LocalImageConverter"/>
+    </ContentPage.Resources>
+    <Grid BindingContext="{Binding ProductViewModel}">
+           
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250"/>
+     
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <ff:CachedImage Grid.Row="0"
+                            Source="{Binding Product.Image,Converter={StaticResource LocalImageConverter}}"
+                            Aspect="AspectFit" VerticalOptions="Start"
+                           />
+           
+         
+        <Frame Grid.Row="1"  CornerRadius="30" BackgroundColor="White" Margin="0,-10" BorderColor="DarkBlue">
+            
+                 <Grid Padding="25,30" ColumnDefinitions="Auto,*" RowDefinitions="25,80,18,25">
+                    
+                          <!-- Here add the code that is being explained in the next block-->
+                      <Label Grid.Row="0" 
+                             Grid.ColumnSpan="2"
+                             Text="{Binding Product.Title}"
+                             TextColor="Black" FontAttributes="Bold" FontSize="20"/>
+
+                     <Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Product.Description}" TextColor="Silver"/>
+                     <Label Grid.Row="2" Grid.Column="0" Text="{Binding Product.Category, StringFormat='Category: {0}'}" TextColor="Black"/>
+                                      
+                      <Label Grid.Row="3" Grid.Column="0" Text="{Binding Product.Price, StringFormat='{0:C}'}"
+                             FontAttributes="Bold" VerticalOptions="Center" />
+                      <Label Text="&#xf005;"
+                             IsVisible="{Binding Product.Rating.IsVisibleStarRating}"
+                             FontSize="16"
+                             Grid.Row="3" Grid.Column="1"
+                             FontFamily="FaSolid"
+                             HorizontalTextAlignment="End"
+                             Margin="0,0,-30,0"
+                             TextColor="DarkBlue" FontAttributes="Bold"/>
+                     <Label 
+                             Text="{Binding Product.Rating.Rate}"
+                             FontSize="16" Grid.Row="3" Grid.Column="1"
+                             HorizontalTextAlignment="End"
+                             TextColor="DarkBlue" FontAttributes="Bold"/>
+                     </Grid>
+        </Frame>         
+ </Grid>      
+</ContentPage>
+

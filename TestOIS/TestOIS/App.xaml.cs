@@ -13,11 +13,12 @@ namespace TestOIS
     {
         public App ()
         {
-            //MainViewModel.Instance.SQLiteHelper = new SQLiteHelper(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbOIS.db3"));
-            //MainViewModel.Instance.ProductsViewModel = new ProductsViewModel();
+            
             InitializeComponent();
-         
-            MainPage = new ProductsPage();
+            MainViewModel.Instance.SQLiteHelper = new SQLiteHelper(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbOIS.db3"));
+            MainViewModel.Instance.ProductsViewModel = new ProductsViewModel();
+          
+            MainPage = new NavigationPage(new ProductsPage());
         }
 
         protected override void OnStart ()

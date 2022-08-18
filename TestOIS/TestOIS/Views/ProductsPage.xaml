@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:converters="clr-namespace:TestOIS.Converters"
+             x:Class="TestOIS.Views.ProductsPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             >
+    <ContentPage.Resources>
+        <converters:LocalImage x:Key="LocalImageConverter"/>
+    </ContentPage.Resources>
+    <StackLayout BindingContext="{Binding ProductsViewModel}" >
+
+         <ListView
+            ItemsSource="{Binding Products}"
+            HasUnevenRows="True"
+             >
+
+             <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <StackLayout>
+                   <ff:CachedImage Source="{Binding Image,Converter={StaticResource LocalImageConverter}}"
+                                   LoadingPlaceholder = "Logo"
+                                    ErrorPlaceholder     = "Error"
+                                    WidthRequest         = "150"
+                                    HeightRequest        = "150"
+                                    CacheDuration        = "30"
+                                    RetryCount           = "5"
+                                    RetryDelay           = "450"
+                                    DownsampleToViewSize = "true"/>
+                    <Label Text="{Binding Title}" TextColor="Black"/>
+                    <Label Text="{Binding Description}" TextColor="SlateGray"/>
+                    <Label Text="{Binding Category}" TextColor="DarkBlue"/>
+                    <Label Text="{Binding Price}" TextColor="Black"/>
+                    <Label Text="{Binding Rating.Rate}" TextColor="Black"/>
+
+                  
+                  </StackLayout>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+    
+    </ListView>
+    </StackLayout>
+   
+</ContentPage>
+

@@ -4,7 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
     x:Class="TestOIS.Views.CreateAccountPage">
-    <Grid BindingContext="{Binding CreateAccountViewModel}"  RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="20" ColumnDefinitions="*,*" ColumnSpacing="20" VerticalOptions="CenterAndExpand" Padding="30,0">
+    <ScrollView BindingContext="{Binding CreateAccountViewModel}">
+
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="20" ColumnDefinitions="*,*" ColumnSpacing="20" VerticalOptions="CenterAndExpand" Padding="30,0">
 
            <!-- Title-->
            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="25" FontAttributes="Bold" HorizontalTextAlignment="Center" Text="Create an account"/>
@@ -53,5 +55,8 @@
                  </Label.GestureRecognizers>
             </Label>
        </Grid>
+
+    </ScrollView>
+    
 </ContentPage>
 

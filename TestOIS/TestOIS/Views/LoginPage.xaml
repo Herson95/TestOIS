@@ -4,8 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
     x:Class="TestOIS.Views.LoginPage"
+    NavigationPage.HasNavigationBar="False"
     BackgroundColor="White">
-   <Grid BindingContext="{Binding LoginViewModel}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  RowDefinitions="Auto,*">
+    <ScrollView BindingContext="{Binding LoginViewModel}">
+        <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  RowDefinitions="Auto,Auto">
             
             <Image Grid.Row="0" Margin="0,20,0,20" Source="OIS.png" Aspect="AspectFit" HeightRequest="180" WidthRequest="80"></Image>
             <Frame Grid.Row="1" Margin="20,30" BorderColor="DarkBlue" HasShadow="True"  CornerRadius="50" >
@@ -51,5 +53,7 @@
             </Grid>
             </Frame>
         </Grid>
+    </ScrollView>
+   
 </ContentPage>
 

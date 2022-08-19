@@ -87,10 +87,11 @@ namespace TestOIS.ViewModels
                 return;
             }
 
-            user.Password = Encryptor.MD5Hash(User.Password);
+            exist = User;
+            exist.Password = Encryptor.MD5Hash(User.Password);
             await MainViewModel.Instance.SQLiteHelper.SaveUserAsync(user);
-            User = await MainViewModel.Instance.SQLiteHelper.LoginAsync(user.UserName,user.Password);
-            Application.Current.Properties["userLogged"] = User;
+            exist = await MainViewModel.Instance.SQLiteHelper.LoginAsync(exist.UserName, exist.Password);
+            Application.Current.Properties["userLogged"] = exist;
             MainViewModel.Instance.ProductsViewModel = new ProductsViewModel();
             Application.Current.MainPage = new NavigationPage(new ProductsPage());
         }

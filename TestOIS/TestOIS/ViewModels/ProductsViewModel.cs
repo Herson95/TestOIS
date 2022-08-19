@@ -70,11 +70,12 @@
                     if (tryAgain)
                     {
                         await GetProductsAsync();
-
                     }
-                    IsBusy = false;
-                    Process.GetCurrentProcess().Kill();
-                    return;
+                    else
+                    {
+                        Process.GetCurrentProcess().Kill();
+                        return;
+                    }
                 }
 
                 Response response = await service.GetProductsAsync();
@@ -84,11 +85,12 @@
                     if (tryAgain)
                     {
                         await GetProductsAsync();
-
                     }
-                    IsBusy = false;
-                    Process.GetCurrentProcess().Kill();
-                    return;
+                    else
+                    {
+                        Process.GetCurrentProcess().Kill();
+                        return;
+                    }
                 }
                 listProduct = response.Result as List<Product>;
 

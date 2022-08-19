@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    x:Class="TestOIS.Views.LoginPage"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="White">
+    <ScrollView BindingContext="{Binding LoginViewModel}">
+        <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  RowDefinitions="Auto,Auto">
+            
+            <Image Grid.Row="0" Margin="0,20,0,20" Source="OIS.png" Aspect="AspectFit" HeightRequest="180" WidthRequest="80"></Image>
+            <Frame Grid.Row="1" Margin="20,30" BorderColor="DarkBlue" HasShadow="True"  CornerRadius="50" >
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="20" Padding="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                  
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0"  Text="OIS APP" FontSize="24" FontAttributes="Bold" TextColor="DarkBlue" HorizontalOptions="CenterAndExpand"/>
+                    <Label Grid.Row="1" Margin="0,-15,0,0" Text="Login in to account" TextColor="DarkBlue"  HorizontalOptions="CenterAndExpand"/>
+                    <Entry Grid.Row="2" Placeholder="Username"
+                           Margin="0,20,0,0"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           Text="{Binding UserName}"
+                           />
+                    <Entry Grid.Row="3" Placeholder="Password"
+                           IsPassword="True"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           Text="{Binding Password}"/>
+                    <Button Grid.Row="4" Text="Login" BackgroundColor="DarkBlue" CornerRadius="20" TextColor="White"
+                            Command="{Binding ActionCommand}" CommandParameter="Login"/>
+                   
+
+                    <Label Grid.Row="5" FontAttributes="Bold" HorizontalTextAlignment="Center" >
+                        <Label.FormattedText>
+                          <FormattedString>
+                              <Span Text="Don't have an account? "/>
+                              <Span Text="Sign up here" TextColor="DarkBlue"/>
+                          </FormattedString>
+                        </Label.FormattedText>
+                       <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ActionCommand}" CommandParameter="Signup"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+            </Grid>
+            </Frame>
+        </Grid>
+    </ScrollView>
+   
+</ContentPage>
+

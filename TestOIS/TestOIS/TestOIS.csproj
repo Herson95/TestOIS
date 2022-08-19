@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <LangVersion>10.0</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>10.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Models\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Interfaces\" />
+    <None Remove="Services\" />
+    <None Remove="Constans\" />
+    <None Remove="Xam.Plugin.Connectivity" />
+    <None Remove="Infrastructure\" />
+    <None Remove="sqlite-net-pcl" />
+    <None Remove="Data\" />
+    <None Remove="SQLiteNetExtensions" />
+    <None Remove="Xamarin.FFImageLoading" />
+    <None Remove="Xamarin.FFImageLoading.Forms" />
+    <None Remove="Converters\" />
+    <None Remove="Xamarin.FFImageLoading.Transformations" />
+    <None Remove="Fonts\" />
+    <None Remove="Fonts\FontAwesomeRegular.otf" />
+    <None Remove="Fonts\FontAwesomeSolid.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Models\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Services\" />
+    <Folder Include="Constans\" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Data\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\FontAwesomeRegular.otf" />
+    <EmbeddedResource Include="Fonts\FontAwesomeSolid.otf" />
+  </ItemGroup>
+</Project>

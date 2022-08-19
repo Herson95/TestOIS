@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    x:Class="TestOIS.Views.CreateAccountPage">
+    <ScrollView BindingContext="{Binding CreateAccountViewModel}">
+
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="20" ColumnDefinitions="*,*" ColumnSpacing="20" VerticalOptions="CenterAndExpand" Padding="30,0">
+
+           <!-- Title-->
+           <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="25" FontAttributes="Bold" HorizontalTextAlignment="Center" Text="Create an account"/>
+           <!-- Rounded Profile imagen-->
+           <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BorderColor="White" VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="150" HeightRequest="150" CornerRadius="75" HasShadow="False" Padding="0" IsClippedToBounds="True">
+                <Image Source="OIS.png" Aspect="AspectFill"/>
+           </Frame>
+
+           <!-- First name-->
+           <Label Grid.Row="2" Grid.Column="0" Text="First name" TextColor="#787878" FontSize="15"/>
+           <Entry Grid.Row="3" Grid.Column="0" HeightRequest="40" Text="{Binding User.FirstName}"/>
+
+           <!-- Last name-->
+           <Label Grid.Row="2" Grid.Column="1" Text="Last name" TextColor="#787878" FontSize="15"/>
+           <Entry Grid.Row="3" Grid.Column="1" HeightRequest="40" Text="{Binding User.LastName}"/>
+
+           <!-- Email-->
+           <Label Grid.Row="4" Grid.Column="0" Text="Username" TextColor="#787878" FontSize="15" />
+           <Entry Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="40" Text="{Binding User.UserName}" />
+
+           <!-- Password-->
+           <Label Grid.Row="6" Grid.Column="0" Text="Password" TextColor="#787878" FontSize="15" />
+           <Entry Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" IsPassword="True" HeightRequest="40" Text="{Binding User.Password}" />
+           <Label Grid.Row="8" Text="Confirm Password" TextColor="#787878" FontSize="15" />
+           <Entry Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" IsPassword="True" HeightRequest="40" Text="{Binding User.ConfirmPassword}"/>
+          
+           <!-- Register button-->
+           <Button Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"
+                   BackgroundColor="DarkBlue"
+                   Text="Register"
+                   TextColor="White"
+                   CornerRadius="20" FontSize="15"
+                   FontAttributes="Bold"
+                   HorizontalOptions="FillAndExpand"
+                   Command="{Binding ActionCommand}" CommandParameter="Register"/>
+
+           <Label Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" FontAttributes="Bold" HorizontalTextAlignment="Center" >
+                <Label.FormattedText>
+                  <FormattedString>
+                      <Span Text="Already have an account? "/>
+                      <Span Text="Log in" TextColor="DarkBlue"/>
+                  </FormattedString>
+                </Label.FormattedText>
+                 <Label.GestureRecognizers>
+                      <TapGestureRecognizer Command="{Binding ActionCommand}" CommandParameter="Login"/>
+                 </Label.GestureRecognizers>
+            </Label>
+       </Grid>
+
+    </ScrollView>
+    
+</ContentPage>
+

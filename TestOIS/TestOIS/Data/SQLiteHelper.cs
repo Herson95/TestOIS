@@ -18,6 +18,7 @@
             db = new SQLiteAsyncConnection(path);
             db.CreateTableAsync<Product>().Wait();
             db.CreateTableAsync<Rating>().Wait();
+            db.CreateTableAsync<User>().Wait();
         }
         #endregion
 
@@ -26,6 +27,21 @@
         #endregion
 
         #region Methods
+        public async Task SaveUserAsync(User user)
+        {
+            await db.InsertAsync(user);
+        }
+
+        public async Task<User> LoginAsync(string user, string pass)
+        {
+            return await db.Table<User>().FirstOrDefaultAsync(x => x.UserName == user && x.Password == pass);
+        }
+
+        public async Task<User> ExistUserAsync(string user)
+        {
+            return await db.Table<User>().FirstOrDefaultAsync(x => x.UserName == user);
+        }
+
         public async Task SaveProductsLocalAsync(List<Product> products)
         {
             try

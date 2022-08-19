@@ -11,6 +11,7 @@
     using System.Windows.Input;
     using Views;
     using System.Linq;
+    using System.Diagnostics;
 
     public class ProductsViewModel : BaseViewModel
     {
@@ -32,6 +33,8 @@
         #endregion
 
         #region Properties
+        public User UserLogged { get; set; } = Application.Current.Properties["userLogged"] as User;
+
         public ObservableCollection<Product> Products
         {
             get => products;
@@ -70,6 +73,7 @@
 
                     }
                     IsBusy = false;
+                    Process.GetCurrentProcess().Kill();
                     return;
                 }
 
@@ -83,6 +87,7 @@
 
                     }
                     IsBusy = false;
+                    Process.GetCurrentProcess().Kill();
                     return;
                 }
                 listProduct = response.Result as List<Product>;
@@ -126,7 +131,7 @@
         {
             get
             {
-                return new Command(async (product) =>
+                return new Command<Product>(async (product) =>
                 {
                     if (IsBusy)
                     {
@@ -135,10 +140,23 @@
                     IsBusy = true;
                     MainViewModel.Instance.ProductViewModel = new ProductViewModel
                     {
-                        Product = product as Product
+                        Product = product
                     };
                     await Application.Current.MainPage.Navigation.PushAsync(new ProductPage());
                     IsBusy = false;
+                });
+            }
+        }
+
+        public ICommand LogoutCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.Properties["userLogged"] = null;
+                    Application.Current.MainPage = new NavigationPage(new LoginPage());
+                    
                 });
             }
         }

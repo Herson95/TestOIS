@@ -53,6 +53,14 @@
             int port = 80;
             try
             {
+                var current = Connectivity.NetworkAccess;
+
+                if (current != NetworkAccess.Internet)
+                {
+                    response.IsSuccess = false;
+                    response.Message = "Please turn on your internet";
+                    return response;
+                }
                 if (!CrossConnectivity.Current.IsConnected)
                 {
                     response.IsSuccess = false;

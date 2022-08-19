@@ -38,7 +38,11 @@
 
         public ProductViewModel ProductViewModel { get; set; }
 
-      
+        public LoginViewModel LoginViewModel { get; set; }
+
+        public CreateAccountViewModel CreateAccountViewModel { get; set; }
+
+
         #endregion
 
     }

@@ -5,17 +5,27 @@
              xmlns:transform= "clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:converters="clr-namespace:TestOIS.Converters"
              x:Class="TestOIS.Views.ProductsPage"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BindingContext="{Binding Main.ProductsViewModel, Source={StaticResource Locator}}"
              >
     <ContentPage.Resources>
         <converters:LocalImage x:Key="LocalImageConverter"/>
     </ContentPage.Resources>
-    <StackLayout x:Name="Main" BindingContext="{Binding ProductsViewModel}" >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding UserLogged.FirstName}" 
+                     Order="Primary"
+                     Priority="0" />
+        <ToolbarItem Text="Log out"
+                     Order="Secondary"
+                     Priority="1"
+                     Command="{Binding LogoutCommand}"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout x:Name="Main" >
          <SearchBar Text="{Binding Search, Mode=TwoWay}" Placeholder="Title" PlaceholderColor="Silver"/>
          <ListView
             ItemsSource="{Binding Products}"
             HasUnevenRows="True"
-            IsRefreshing="{Binding IsBusy}">
+            IsRefreshing="{Binding IsBusy}"
+            CachingStrategy="RecycleElement">
 
              <ListView.ItemTemplate>
               <DataTemplate>
@@ -53,27 +63,6 @@
                                  </Grid.GestureRecognizers>
                                 
                            </Grid>
-
-                  <!--<Grid>
-                     
-                          
-                   <ff:CachedImage Source="{Binding Image,Converter={StaticResource LocalImageConverter}}"
-                                   LoadingPlaceholder = "Logo"
-                                    ErrorPlaceholder     = "Error"
-                                    WidthRequest         = "150"
-                                    HeightRequest        = "150"
-                                    CacheDuration        = "30"
-                                    RetryCount           = "5"
-                                    RetryDelay           = "450"
-                                    DownsampleToViewSize = "true"/>
-                    <Label Text="{Binding Title}" TextColor="Black"/>
-                    <Label Text="{Binding Description}" TextColor="SlateGray"/>
-                    <Label Text="{Binding Category}" TextColor="DarkBlue"/>
-                    <Label Text="{Binding Price}" TextColor="Black"/>
-                    <Label Text="{Binding Rating.Rate}" TextColor="Black"/>
-
-                  
-                  </Grid>-->
                 </ViewCell>
               </DataTemplate>
             </ListView.ItemTemplate>

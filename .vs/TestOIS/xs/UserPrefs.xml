@@ -1,0 +1,48 @@
+﻿<Properties StartupConfiguration="{34EB421E-1DF4-4C00-AE04-C277FDF43FCB}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.tablet_m-dpi_10_1in_-_api_30" />
+  <MonoDevelop.Ide.ItemProperties.TestOIS.Android PreferredExecutionTarget="Android.tablet_m-dpi_10_1in_-_api_30" AndroidDesignerPreferredTheme="MainTheme" />
+  <MonoDevelop.Ide.ItemProperties.TestOIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.36D5A889-15E4-44D3-94C7-2763D8141F92" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/prez/Projects/TestOIS/TestOIS/TestOIS/Data/SQLiteHelper.cs" relfile="TestOIS/TestOIS/Data/SQLiteHelper.cs" line="30" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../Applications/Visual Studio.app/Contents/MonoBundle/MSBuild/Current/bin/Microsoft.Common.CurrentVersion.targets">
+    <Files>
+      <File FileName="TestOIS/TestOIS/ViewModels/ProductsViewModel.cs" Line="58" Column="1" />
+      <File FileName="TestOIS/TestOIS/ViewModels/CreateAccountViewModel.cs" Line="95" Column="76" />
+      <File FileName="TestOIS/TestOIS/Views/ProductsPage.xaml.cs" Line="24" Column="25" />
+      <File FileName="TestOIS/TestOIS.Android/Properties/AndroidManifest.xml" />
+      <File FileName="TestOIS/TestOIS.Android/Properties/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="TestOIS/TestOIS.Android/MainActivity.cs" Line="10" Column="84" />
+      <File FileName="TestOIS/TestOIS.Android/Resources/drawable/Splas_Screen.xml" Line="4" Column="50" />
+      <File FileName="TestOIS/TestOIS.Android/Resources/values/colors.xml" Line="7" Column="11" />
+      <File FileName="TestOIS/TestOIS.Android/Resources/values/styles.xml" Line="20" Column="65" />
+      <File FileName="TestOIS/TestOIS.Android/SplashActivity.cs" Line="44" Column="10" />
+      <File FileName="TestOIS/TestOIS/Views/LoginPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="TestOIS/TestOIS.iOS/Info.plist" />
+      <File FileName="TestOIS/TestOIS.iOS/Main.cs" Line="1" Column="1" />
+      <File FileName="TestOIS/TestOIS/Views/LoginPage.xaml" Line="8" Column="29" />
+      <File FileName="TestOIS/TestOIS/Views/CreateAccountPage.xaml" Line="9" Column="15" />
+      <File FileName="../../../../Applications/Visual Studio.app/Contents/MonoBundle/MSBuild/Current/bin/Microsoft.Common.CurrentVersion.targets" Line="2218" Column="5" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TestOIS" expanded="True">
+            <Node name="TestOIS" expanded="True" />
+            <Node name="TestOIS.Android" expanded="True" />
+            <Node name="TestOIS.iOS" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.MonoDroid LastDeploySdkVersion="13.0.0.0" />
+</Properties>
